@@ -4,12 +4,10 @@ djangorestframework-csv
 
 |build status|_
 
-.. |build status| image:: https://secure.travis-ci.org/mjumbewu/django-rest-framework-csv.png?branch=master
-.. _build status: https://travis-ci.org/mjumbewu/django-rest-framework-csv
+.. |build status| image:: https://github.com/mjumbewu/django-rest-framework-csv/actions/workflows/test.yml/badge.svg
+.. _build status: https://github.com/mjumbewu/django-rest-framework-csv/actions/workflows/test.yml
 
 **CSV Tools for Django REST Framework**
-
-**Author:** Mjumbe Wawatu Poe, `Follow me on Twitter <http://www.twitter.com/mjumbewu>`_.
 
 Installation
 ------------
@@ -17,6 +15,12 @@ Installation
 .. code-block:: bash
 
     $ pip install djangorestframework-csv
+
+Compatibility
+-------------
+
+- For compatibility with Python 3 and Django < 3.2, use `djangorestframework-csv<3.0.1`
+- For compatibility with Python 2.7, use `djangorestframework-csv<3`
 
 Usage
 -----
@@ -62,7 +66,7 @@ are two ways to do this:
         @api_view(['GET'])
         @renderer_classes((MyUserRenderer,))
         def my_view(request):
-            users = User.objects.filter(active=True)
+            users = User.objects.filter(is_active=True)
             content = [{'first': user.first_name,
                         'last': user.last_name,
                         'email': user.email}
@@ -127,6 +131,20 @@ To run the tests against the current environment:
 
 Changelog
 =========
+
+3.0.1
+-----
+
+- Remove Django tests for all but the currently supported Django versions
+  (3.2, 4.1, 4.2). Also only keep tests for Python versions compatible with
+  supported Django versions (3.8 - 3.11).
+
+3.0.0
+-----
+
+- Removed compatibility with Python 2
+- Added compatibility with Django up to 3.2 and 4.2
+  (thanks to work from @TTycho, @awais786, @arpitjain799, @tirkarthi)
 
 2.1.1
 -----
